@@ -9,6 +9,7 @@ namespace DemoProject.Nodes {
 
         private float timer;
 
+
         public override void NodeUpdate( float deltaTime ) {
             // 累计时间，达到 1 秒就产出
             timer += deltaTime;

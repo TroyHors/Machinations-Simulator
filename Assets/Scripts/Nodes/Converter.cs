@@ -12,6 +12,7 @@ namespace DemoProject.Nodes {
 
         private float timer;
 
+
         public override void NodeUpdate( float deltaTime ) {
             timer += deltaTime * convertRate;
 

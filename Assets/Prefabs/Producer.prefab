@@ -146,5 +146,6 @@ MonoBehaviour:
   inputConnections: []
   outputConnections: []
   nodeName: Producer
+  nodeIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   produceType: 0
   produceRate: 1

@@ -146,5 +146,6 @@ MonoBehaviour:
   inputConnections: []
   outputConnections: []
   nodeName: Consumer
+  nodeIcon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   consumeType: 0
   consumeRate: 1

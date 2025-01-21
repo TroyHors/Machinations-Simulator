@@ -6,6 +6,8 @@ namespace DemoProject.Core {
         public NodeBase sourceNode;
         public NodeBase targetNode;
 
+        public GameObject arrowIndicator;
+
         private LineRenderer lineRenderer;
 
         private void Awake() {
@@ -19,8 +21,21 @@ namespace DemoProject.Core {
 
         private void Update() {
             if (sourceNode != null && targetNode != null) {
-                lineRenderer.SetPosition( 0 , sourceNode.transform.position );
-                lineRenderer.SetPosition( 1 , targetNode.transform.position );
+                Vector3 startPos = sourceNode.transform.position;
+                Vector3 endPos = targetNode.transform.position;
+
+                lineRenderer.SetPosition( 0 , startPos );
+                lineRenderer.SetPosition( 1 , endPos );
+
+                // 新增：将 arrowIndicator 放在连线中点并朝向目标
+                if (arrowIndicator != null) {
+                    Vector3 midPos = ( startPos + endPos ) * 0.5f;
+                    arrowIndicator.transform.position = midPos;
+
+                    Vector3 dir = endPos - startPos;
+                    float angle = Mathf.Atan2( dir.y , dir.x ) * Mathf.Rad2Deg;
+                    arrowIndicator.transform.rotation = Quaternion.Euler( 0f , 0f , angle );
+                }
             }
         }
     }

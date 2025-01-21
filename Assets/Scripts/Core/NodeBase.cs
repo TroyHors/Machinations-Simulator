@@ -16,6 +16,7 @@ namespace DemoProject.Core {
 
         // 在这里可以设定节点通用的唯一 ID、名字等信息（可选）
         public string nodeName = "BaseNode";
+        public Sprite nodeIcon;
 
         protected virtual void Start() {
             // 在启动时注册到管理器
