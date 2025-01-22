@@ -14,6 +14,9 @@ public class NodeUIManager : MonoBehaviour {
     [Header( "Reference to Placement System" )]
     public PlacementSystem placementSystem;
 
+    public GameObject uiRoot;  // 指向整个下方 UI 的最外层容器
+    public bool isOpen = true;
+
     private int currentPage = 0;
 
     /// <summary>
@@ -85,5 +88,10 @@ public class NodeUIManager : MonoBehaviour {
                 slotBtn.onClick.RemoveAllListeners();
             }
         }
+    }
+
+    public void ToggleUIBar() {
+        isOpen = !isOpen;
+        uiRoot.SetActive( isOpen );
     }
 }

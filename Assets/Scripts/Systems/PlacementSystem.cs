@@ -1,3 +1,4 @@
+using DemoProject.Core;
 using DemoProject.Systems;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,6 +12,8 @@ public class PlacementSystem : MonoBehaviour {
     private Vector2Int currentGridPos;          // 实时网格坐标
     private Vector3 currentWorldPos;            // 对齐后的世界坐标
     private bool canPlace;                      // 是否允许放置
+
+    public NodeInspector nodeInspector;
 
     void Update() {
         // 1. 如果连线模式打开，则禁用放置功能
@@ -30,6 +33,15 @@ public class PlacementSystem : MonoBehaviour {
 
         // 4. 鼠标左键点击 -> 尝试放置
         if (Input.GetMouseButtonDown( 0 )) {
+            
+            RaycastHit2D hit = Physics2D.Raycast( Camera.main.ScreenToWorldPoint( Input.mousePosition ) , Vector2.zero );
+            if (hit.collider != null) {
+                NodeBase node = hit.collider.GetComponent<NodeBase>();
+                if (node != null) {
+                    nodeInspector.ShowNode( node );
+                }
+            }
+            
             // 未选预制体则不操作
             if (selectedPrefab == null) return;
 
